@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+	<head>
+		<title>T2weener</title>
+		<script src="jquery-3.3.1.min.js"></script>
+		<script src="jzip/dist/jszip.min.js"></script>
+		<script src="FileSaver.js-master/dist/FileSaver.min.js"></script>
+		<script src="main.js"></script>
+		<script src="easings.js"></script>
+		<script src="modes.js"></script>
+		<style>
+			input.number {
+				width: 2em;
+				display: inline-block;
+				text-align: right;
+			}
+			label {
+				display: inline-block;
+			}
+			input.number[type="number"] {
+				width: 3em;
+			}
+			table {
+				table-layout: fixed;
+				width: 100%;
+			}
+			td {
+				width: 8em;
+				text-align: center;
+			}
+			tr > *:first-child {
+				width: 4em;
+			}
+		</style>
+	</head>
+	<body>
+		<header style="display:table-cell; vertical-align: top">
+			<p><label>Reference image(s): <input type="file" id="ref_img" multiple></label>
+			<p><label>Source image(s): <input type="file" id="src_img" multiple></label>
+			<p><label>Edit: <select id="mode"></select></p>
+			<p><label>Frame:
+			<input
+				type="number"
+				class="number"
+				id="current_frame"
+				min="1"
+				value="1"></label>
+			<label>Of:			
+			<input
+				type="number"
+				class="number"
+				id="count_frames"
+				min="2"
+				value="12">
+			</label></p>
+			<p>Alpha:</p>
+			<p>
+				<label>Start <input class="number" id="alpha_start" value="0.5" type="number" step="0.1" min="0" max="1"></label>
+				<label>Fade <input class="number" id="alpha_fade" value="0.5" type="number" step="0.1" min="0" max="1"></label>
+				<label>End <input class="number" id="alpha_end" value="0.5" type="number" step="0.1" min="0" max="1"></label>
+			</p>
+			<p><label>Origin:
+				<input class="number" id="origin_x" value="0" />
+				<input class="number" id="origin_y" value="0" />
+			</label></p>
+			<p><label>Origin Colour:
+				<input id="origin_colour" value="#000000" style="width:5em"/>
+			</label></p>
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Start</th>
+						<th>End</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>Move</th>
+						<td>
+							<input class="number" id="start_position_x" value="0"/>
+							<input class="number" id="start_position_y" value="0"/>
+						</td>
+						<td>
+							<input class="number" id="end_position_x" value="0"/>
+							<input class="number" id="end_position_y" value="0"/>
+						</td>
+					</tr>
+					<tr>
+						<th>Scale</th>
+						<td>
+							<input class="number" id="start_scale_x" value="1"/>
+							<input class="number" id="start_scale_y" value="1"/>
+						</td>
+						<td>
+							<input class="number" id="end_scale_x" value="1"/>
+							<input class="number" id="end_scale_y" value="1"/>
+						</td>
+					</tr>
+					<tr>
+						<th>Rotate</th>
+						<td>
+							<input class="number" id="start_rotate" value="0"/>
+						</td>
+						<td>
+							<input class="number" id="end_rotate" value="0"/>
+						</td>
+					</tr>
+					<tr>
+						<th>Skew</th>
+						<td>
+							<input class="number" id="start_skew_x" value="0"/>
+							<input class="number" id="start_skew_y" value="0"/>
+						</td>
+						<td>
+							<input class="number" id="end_skew_x" value="0"/>
+							<input class="number" id="end_skew_y" value="0"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p><label>Easing: <select id="easing"></select></label></p>
+			<p><a id="download" href="">Download</a></p>
+		</header>
+		<div class="wrapper" style="display:table-cell">
+			<canvas
+				id="canvas"
+				width="1000"
+				height="1000"
+				style="border: 1px solid black"
+			></canvas>
+		</div>
+	</body>
+</html>
