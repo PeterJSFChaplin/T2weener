@@ -23,7 +23,7 @@
 				display: inline-block;
 			}
 			input.number[type="number"] {
-				width: 3em;
+				width: 3.5em;
 			}
 			table {
 				table-layout: fixed;
@@ -53,6 +53,10 @@
 	</head>
 	<body>
 		<header style="display:table-cell; vertical-align: top">
+			<p>
+				<label>Width <input type="number" id="width" value="1000" class="number"/></label>
+				<label>Height <input type="number" id="height" value="1000" class="number"/></label>
+			</p>
 			<p><label>Files to Frames<input type="file" id="frames_in" multiple/></label></p>
 			<p><label>Files to Layers<input type="file" id="layers_in" multiple/></label></p>
 			<p>

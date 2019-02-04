@@ -13,6 +13,13 @@ $(function(){
 	var context = canvas.getContext('2d');
 	var counter = 0;
 	
+	$('#width').on('change',function(){
+		$('#canvas').attr('width',val('#width'));
+	});
+	$('#height').on('change',function(){
+		$('#canvas').attr('height',val('#height'));
+	});
+	
 	$('#layers').jstree({
 		core: {
 			animation: 0,
