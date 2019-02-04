@@ -1,13 +1,18 @@
 <!doctype html>
 <html>
 	<head>
+		<meta charset="utf-8"/>
 		<title>T2weener</title>
 		<script src="jquery-3.3.1.min.js"></script>
 		<script src="jzip/dist/jszip.min.js"></script>
 		<script src="FileSaver.js-master/dist/FileSaver.min.js"></script>
+		<script src="jstree/dist/jstree.min.js"></script>
+		<link rel="stylesheet" href="jstree/dist/themes/default/style.min.css"/>
+		
 		<script src="main.js"></script>
 		<script src="easings.js"></script>
 		<script src="modes.js"></script>
+		<script src="transformation.js"></script>
 		<style>
 			input.number {
 				width: 2em;
@@ -31,12 +36,30 @@
 			tr > *:first-child {
 				width: 4em;
 			}
+			.t2weener-transformation::before {
+				content: 'T';
+				font-family: serif;
+				position: absolute;
+				width: 23px;
+				height: 23px;
+				text-align: center;
+				line-height: 23px;
+				font-size: 16px;
+				display: block;
+				font-style: normal;
+				border: 1px solid lightgrey;
+			}
 		</style>
 	</head>
 	<body>
 		<header style="display:table-cell; vertical-align: top">
-			<p><label>Reference image(s): <input type="file" id="ref_img" multiple></label>
-			<p><label>Source image(s): <input type="file" id="src_img" multiple></label>
+			<p><label>Files to Frames<input type="file" id="frames_in" multiple/></label></p>
+			<p><label>Files to Layers<input type="file" id="layers_in" multiple/></label></p>
+			<p>
+				<button id="add_group">+ Group</button>
+				<button id="add_tween">+ Tween</button>
+			</p>
+			<div id="layers"></div>
 			<p><label>Edit: <select id="mode"></select></p>
 			<p><label>Frame:
 			<input
